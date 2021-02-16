@@ -28,7 +28,7 @@ public class HQLExample3 {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
-		//1.
+		//1.Fetch all columns from the table
 		SQLQuery query = session.createSQLQuery("select * from student where marks > 60");
 		query.addEntity(Student.class);
 		List students=query.list();
@@ -37,7 +37,7 @@ public class HQLExample3 {
 //			System.out.println(student);
 		}
 		
-		//2.
+		//2.Fetch particular column and by map interface to get the values
 		SQLQuery query1 = session.createSQLQuery("select name,marks from student where marks > 60");
 		query1.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 		List students1=query1.list();
